@@ -1,0 +1,30 @@
+-- Spinning Head Effect
+
+local player = game.Players.LocalPlayer
+local character = player.Character
+local humanoid = character:WaitForChild("Humanoid")
+local head = character:WaitForChild("Head")
+
+-- Create animation track
+local animationTrack = humanoid:LoadAnimation(script.Parent)
+
+-- Function to spin the head
+local function spinHead()
+    while true do
+        -- Rotate the head around Y axis (left-right)
+        head.RotVelocity = Vector3.new(0, 50, 0)
+        
+        wait(0.1)
+        
+        -- Reset rotation velocity after waiting
+        head.RotVelocity = Vector3.new(0, 0, 0)
+        
+        wait(0.1)
+    end
+end
+
+-- Start spinning the head
+spinHead()
+
+-- Play the animation
+animationTrack:Play()
